@@ -98,22 +98,35 @@ export default function Home() {
 
         <div className="hero-visual hero-enter hero-enter-image">
           <div className="hero-image-wrap">
-            <img
-              src="/images/hero-jarid-cyan.webp"
-              alt="تصميم سيليكون سيان مخصص مع تشكيلة شوكولاتة تحمل تفاصيل مستوحاة من النخلة"
-              width="1537"
-              height="1023"
-              fetchPriority="high"
-            />
-          </div>
-          <div className="hero-stamp" aria-hidden="true">
-            <img src="/brand/jarid-icon-gold.svg" alt="" />
-            <span>من الفكرة</span>
-            <strong>إلى الإنتاج</strong>
-          </div>
-          <div className="hero-caption">
-            <span>تفاصيل دقيقة</span>
-            <span>سيليكون مخصص للمشروع</span>
+            <picture className="hero-picture">
+              <source
+                media="(max-width: 600px)"
+                srcSet="/images/hero-jarid-studio-mobile-v2.jpg"
+              />
+              <img
+                src="/images/hero-jarid-studio-desktop-v2.jpg"
+                alt="قالب سيليكون سيان مخصص مع قطع شوكولاتة تظهر دقة التفاصيل"
+                width="1536"
+                height="1024"
+                fetchPriority="high"
+              />
+            </picture>
+
+            <div className="hero-stage-badge" aria-label="من الفكرة إلى الإنتاج">
+              <img src="/brand/jarid-icon-gold.svg" alt="" />
+              <span>من الفكرة <strong>إلى الإنتاج</strong></span>
+            </div>
+
+            <ul className="hero-facts" aria-label="تفاصيل التصميم">
+              <li>
+                <span className="hero-fact-mark" aria-hidden="true" />
+                <strong>تفاصيل دقيقة</strong>
+              </li>
+              <li>
+                <span className="hero-fact-mark" aria-hidden="true" />
+                <strong>سيليكون مخصص للمشروع</strong>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

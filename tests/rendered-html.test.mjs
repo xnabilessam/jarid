@@ -49,6 +49,21 @@ test("يعرض الصفحة الرئيسية العربية وروابط الت�
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
+test("يعرض صورة هيرو متجاوبة ويجمع تفاصيل التصميم بوضوح", async () => {
+  const response = await render();
+  const html = await response.text();
+  const picture = html.match(/<picture\b[\s\S]*?<\/picture>/i)?.[0];
+  const facts = html.match(
+    /<(?:ul|div)\b[^>]*aria-label="تفاصيل التصميم"[^>]*>[\s\S]*?<\/(?:ul|div)>/i,
+  )?.[0];
+
+  assert.ok(picture, "يجب استخدام picture لصورة هيرو المتجاوبة");
+  assert.match(picture, /<source\b[^>]*media="\(max-width:\s*600px\)"/i);
+  assert.ok(facts, "يجب جمع بادجات الهيرو في منطقة واضحة");
+  assert.match(visibleText(facts), /تفاصيل دقيقة/);
+  assert.match(visibleText(facts), /سيليكون مخصص للمشروع/);
+});
+
 test("يكرر شريط المزايا كمجموعتين كاملتين لحركة متصلة", async () => {
   const response = await render();
   const html = await response.text();
