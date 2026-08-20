@@ -13,21 +13,21 @@ const services = [
     title: "قوالب الشوكولاتة",
     description:
       "تصاميم للمواسم والمنتجات الخاصة، مع تخصيص المقاس والتفاصيل بما ينسجم مع هوية العلامة.",
-    image: "/images/catalog-chocolate-plate.webp",
+    image: "/images/service-chocolate-plate-v2.png",
   },
   {
     tag: "لتقديم راقٍ",
     title: "قوالب التيراميسو",
     description:
       "تكوينات مدروسة توازن بين مساحة التفاصيل وارتفاع المنتج وطريقة التقديم.",
-    image: "/images/product-tiramisu-palm.webp",
+    image: "/images/service-tiramisu-palm-v2.png",
   },
   {
     tag: "للعلامات التجارية",
     title: "تصميم خاص لبراندك",
     description:
       "إضافة شعار أو نمط أو كتابة، أو تطوير عناصر مستوحاة من الهوية حسب قابلية التنفيذ.",
-    image: "/images/product-tiramisu-custom.webp",
+    image: "/images/service-custom-design-v2.png",
   },
 ];
 
@@ -77,7 +77,13 @@ export default function ServicesPage() {
             <article className="service-row reveal" key={service.title}>
               <div className="service-number">0{index + 1}</div>
               <div className="service-row-image">
-                <img src={service.image} alt={service.title} loading="lazy" />
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  width="1024"
+                  height="1024"
+                  loading="lazy"
+                />
               </div>
               <div className="service-row-copy">
                 <span>{service.tag}</span>

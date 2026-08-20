@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(pathname = "/") {
@@ -89,6 +90,28 @@ test("يعرض صفحات الخدمات والخصوصية والشروط", asy
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /جريد/);
+  }
+});
+
+test("يستخدم ثلاث صور خدمات مربعة وشفافة بالحجم نفسه", async () => {
+  const response = await render("/services");
+  const html = await response.text();
+  const imagePaths = [
+    ...html.matchAll(
+      /<div class="service-row-image"><img src="([^"]+)"[^>]*><\/div>/g,
+    ),
+  ].map((match) => match[1]);
+
+  assert.equal(imagePaths.length, 3);
+
+  for (const imagePath of imagePaths) {
+    assert.match(imagePath, /\.png$/i, `${imagePath} ليست صورة PNG شفافة`);
+
+    const png = await readFile(new URL(`../public${imagePath}`, import.meta.url));
+    assert.equal(png.subarray(1, 4).toString("ascii"), "PNG");
+    assert.equal(png.readUInt32BE(16), 1024, `${imagePath} عرضها غير موحد`);
+    assert.equal(png.readUInt32BE(20), 1024, `${imagePath} ارتفاعها غير موحد`);
+    assert.ok([4, 6].includes(png[25]), `${imagePath} لا تحتوي على قناة شفافية`);
   }
 });
 

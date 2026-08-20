@@ -1440,20 +1440,23 @@ a {
 }
 
 .service-row-image {
-  height: 330px;
-  overflow: hidden;
-  background: var(--sand);
+  width: min(100%, 360px);
+  aspect-ratio: 1;
+  justify-self: center;
+  overflow: visible;
+  background: transparent;
 }
 
 .service-row-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px rgba(17, 39, 54, 0.13));
   transition: transform 600ms ease;
 }
 
 .service-row:hover .service-row-image img {
-  transform: scale(1.04);
+  transform: translateY(-4px) scale(1.025);
 }
 
 .service-row-copy {
@@ -1911,7 +1914,7 @@ a {
   }
 
   .service-row-image {
-    height: 350px;
+    width: min(100%, 360px);
   }
 
   .legal-layout {
@@ -2205,7 +2208,7 @@ a {
   }
 
   .service-row-image {
-    height: 270px;
+    width: min(100%, 300px);
   }
 
   .customization-card {
