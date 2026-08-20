@@ -277,10 +277,11 @@ a {
 .hero h1 {
   max-width: 680px;
   margin: 0;
-  font-size: clamp(54px, 6vw, 102px);
+  padding-block: calc(0.18em + 1px);
+  font-size: clamp(50px, 5.2vw, 84px);
   font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
 .hero h1 span {
@@ -1935,8 +1936,9 @@ a {
   }
 
   .hero h1 {
-    font-size: clamp(46px, 14vw, 64px);
-    line-height: 1.02;
+    font-size: clamp(40px, 12vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
 
   .hero-lead {

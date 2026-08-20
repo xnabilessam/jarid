@@ -99,10 +99,10 @@ export default function Home() {
         <div className="hero-visual hero-enter hero-enter-image">
           <div className="hero-image-wrap">
             <img
-              src="/images/hero-jarid.webp"
-              alt="قالب سيليكون مخصص مع قطع شوكولاتة تحمل تفاصيل مستوحاة من النخلة"
-              width="1586"
-              height="992"
+              src="/images/hero-jarid-cyan.webp"
+              alt="قالب سيليكون سيان مخصص مع تشكيلة شوكولاتة تحمل تفاصيل مستوحاة من النخلة"
+              width="1537"
+              height="1023"
               fetchPriority="high"
             />
           </div>

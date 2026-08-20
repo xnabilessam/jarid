@@ -13,21 +13,21 @@ const services = [
     title: "قوالب الشوكولاتة",
     description:
       "تصاميم للمواسم والمنتجات الخاصة، مع تخصيص المقاس والتفاصيل بما ينسجم مع هوية العلامة.",
-    image: "/images/hero-jarid.webp",
+    image: "/images/catalog-chocolate-plate.webp",
   },
   {
     tag: "لتقديم راقٍ",
     title: "قوالب التيراميسو",
     description:
       "تكوينات مدروسة توازن بين مساحة التفاصيل وارتفاع المنتج وطريقة التقديم.",
-    image: "/images/product-tiramisu-custom.webp",
+    image: "/images/product-tiramisu-palm.webp",
   },
   {
     tag: "للعلامات التجارية",
     title: "تصميم خاص لبراندك",
     description:
       "إضافة شعار أو نمط أو كتابة، أو تطوير عناصر مستوحاة من الهوية حسب قابلية التنفيذ.",
-    image: "/images/product-tiramisu-palm.webp",
+    image: "/images/product-tiramisu-custom.webp",
   },
 ];
 
