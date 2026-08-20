@@ -179,9 +179,9 @@ export default function Home() {
         <div className="solutions-grid">
           <article className="solution-card solution-card-wide reveal">
             <div className="solution-visual chocolate-collage" aria-hidden="true">
-              <img src="/images/product-bear.webp" alt="" />
-              <img src="/images/product-incense.webp" alt="" />
-              <img src="/images/product-dallah.webp" alt="" />
+              <img src="/images/solution-bear-portrait-v2.avif" alt="" />
+              <img src="/images/solution-incense-wide-v2.avif" alt="" />
+              <img src="/images/solution-dallah-wide-v2.avif" alt="" />
             </div>
             <div className="solution-copy">
               <span>للضيافة والهدايا</span>
@@ -196,10 +196,10 @@ export default function Home() {
           <article className="solution-card reveal">
             <div className="solution-photo">
               <img
-                src="/images/product-tiramisu-palm.webp"
+                src="/images/solution-tiramisu-wide-v2.jpg"
                 alt="تيراميسو بتصميم نخلة مخصص"
-                width="640"
-                height="455"
+                width="1774"
+                height="887"
                 loading="lazy"
               />
             </div>
