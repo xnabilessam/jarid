@@ -352,32 +352,37 @@ a {
   min-width: 0;
 }
 
-.hero-image-wrap {
-  position: relative;
-  aspect-ratio: 1.24 / 1;
+.hero-media-card {
   overflow: hidden;
-  isolation: isolate;
-  border-radius: 24px 150px 24px 120px;
-  background: var(--sand);
+  border: 1px solid rgba(17, 39, 54, 0.12);
+  border-radius: 28px;
+  background: var(--navy);
   box-shadow: var(--shadow);
 }
 
-.hero-image-wrap::before {
+.hero-photo {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--sand);
+}
+
+.hero-photo::before {
   content: "";
   position: absolute;
   z-index: 1;
   inset: 0;
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: inherit;
   pointer-events: none;
 }
 
-.hero-image-wrap::after {
+.hero-photo::after {
   content: "";
   position: absolute;
   z-index: 2;
   inset: 0;
-  background: linear-gradient(180deg, rgba(17, 39, 54, 0.08), transparent 34%, rgba(17, 39, 54, 0.2));
+  background: linear-gradient(180deg, rgba(17, 39, 54, 0.06), transparent 38%);
   pointer-events: none;
 }
 
@@ -396,28 +401,28 @@ a {
   transition: transform 900ms cubic-bezier(.2,.75,.2,1);
 }
 
-.hero-image-wrap:hover .hero-picture img {
+.hero-photo:hover .hero-picture img {
   transform: scale(1.035);
 }
 
+.hero-info-strip {
+  min-height: 78px;
+  border-top: 2px solid var(--gold);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: stretch;
+}
+
 .hero-stage-badge {
-  position: absolute;
-  z-index: 3;
-  top: 22px;
-  right: 22px;
-  max-width: calc(100% - 44px);
-  padding: 10px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
+  min-width: 172px;
+  padding: 15px 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
   color: var(--white);
-  background: rgba(17, 39, 54, 0.9);
-  box-shadow: 0 14px 34px rgba(17, 39, 54, 0.24);
-  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 13px;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .hero-stage-badge img {
@@ -427,51 +432,38 @@ a {
 }
 
 .hero-stage-badge span {
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
+  display: block;
   white-space: nowrap;
 }
 
 .hero-stage-badge strong {
+  display: block;
   color: var(--gold);
   font-size: inherit;
 }
 
 .hero-facts {
-  position: absolute;
-  z-index: 3;
-  right: 22px;
-  left: 28px;
-  bottom: 22px;
-  max-width: 590px;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 16px;
-  color: var(--navy);
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 18px 48px rgba(17, 39, 54, 0.18);
-  backdrop-filter: blur(16px);
+  color: var(--white);
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   list-style: none;
-  overflow: hidden;
 }
 
 .hero-facts li {
   min-width: 0;
-  min-height: 62px;
-  padding: 13px 16px;
+  min-height: 76px;
+  padding: 15px 18px;
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.35;
 }
 
 .hero-facts li + li {
-  border-right: 1px solid rgba(17, 39, 54, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .hero-facts strong {
@@ -1862,8 +1854,8 @@ a {
     margin-top: 20px;
   }
 
-  .hero-image-wrap {
-    border-radius: 16px 100px 16px 100px;
+  .hero-media-card {
+    border-radius: 24px;
   }
 
   .about-grid,
@@ -1987,22 +1979,30 @@ a {
     gap: 8px;
   }
 
-  .hero-image-wrap {
+  .hero-media-card {
+    border-radius: 20px;
+  }
+
+  .hero-photo {
     aspect-ratio: 4 / 5;
-    border-radius: 14px 70px 14px 54px;
   }
 
   .hero-picture img {
     object-position: center;
   }
 
+  .hero-info-strip {
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
   .hero-stage-badge {
-    top: 12px;
-    right: 12px;
-    max-width: calc(100% - 24px);
-    padding: 8px 11px;
+    min-width: 0;
+    padding: 11px 14px;
+    border-left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
     gap: 8px;
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .hero-stage-badge img {
@@ -2010,12 +2010,17 @@ a {
     height: 18px;
   }
 
+  .hero-stage-badge span {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+
+  .hero-stage-badge strong {
+    display: inline;
+  }
+
   .hero-facts {
-    right: 12px;
-    left: 12px;
-    bottom: 12px;
-    max-width: none;
-    border-radius: 13px;
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   }
 

@@ -64,6 +64,17 @@ test("يعرض صورة هيرو متجاوبة ويجمع تفاصيل التص
   assert.match(visibleText(facts), /سيليكون مخصص للمشروع/);
 });
 
+test("يفصل تفاصيل الهيرو عن منطقة الصورة لمنع القص", async () => {
+  const response = await render();
+  const html = await response.text();
+
+  assert.match(
+    html,
+    /class="hero-photo"[\s\S]*?<\/div>\s*<div class="hero-info-strip"[\s\S]*?<ul class="hero-facts"/i,
+    "يجب أن يأتي شريط التفاصيل بعد منطقة الصورة وليس فوقها",
+  );
+});
+
 test("يكرر شريط المزايا كمجموعتين كاملتين لحركة متصلة", async () => {
   const response = await render();
   const html = await response.text();
