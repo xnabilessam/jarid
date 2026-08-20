@@ -34,6 +34,14 @@ test("يعرض الصفحة الرئيسية العربية وروابط الت�
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
+test("يكرر شريط المزايا كمجموعتين كاملتين لحركة متصلة", async () => {
+  const response = await render();
+  const html = await response.text();
+  const groups = html.match(/class="trust-group"/g) ?? [];
+
+  assert.equal(groups.length, 2);
+});
+
 test("يعرض صفحات الخدمات والخصوصية والشروط", async () => {
   for (const pathname of ["/services", "/privacy", "/terms"]) {
     const response = await render(pathname);
@@ -41,4 +49,12 @@ test("يعرض صفحات الخدمات والخصوصية والشروط", asy
     const html = await response.text();
     assert.match(html, /جريد/);
   }
+});
+
+test("يعرض دعوة التواصل الأخيرة في صفحة الخدمات دون انتظار حركة التمرير", async () => {
+  const response = await render("/services");
+  const html = await response.text();
+
+  assert.match(html, /class="final-cta"/);
+  assert.doesNotMatch(html, /class="final-cta reveal"/);
 });

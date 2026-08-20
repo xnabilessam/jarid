@@ -397,7 +397,7 @@ a {
 .hero-stamp {
   position: absolute;
   z-index: 3;
-  right: -44px;
+  right: 18px;
   bottom: 11%;
   width: 138px;
   aspect-ratio: 1;
@@ -465,6 +465,7 @@ a {
 
 .trust-rail {
   overflow: hidden;
+  direction: ltr;
   color: var(--navy);
   background: var(--gold);
   border-block: 1px solid rgba(17, 39, 54, 0.18);
@@ -475,13 +476,29 @@ a {
   min-height: 54px;
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 0;
   font-size: 15px;
   font-weight: 700;
-  animation: marquee 32s linear infinite;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
 }
 
-.trust-track i {
+.trust-group {
+  min-height: 54px;
+  min-width: 100vw;
+  padding-inline: max(17px, 3vw);
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+}
+
+.trust-group span {
+  direction: rtl;
+}
+
+.trust-group i {
   font-style: normal;
   font-size: 9px;
 }
@@ -1648,7 +1665,8 @@ a {
 }
 
 @keyframes marquee {
-  to { transform: translateX(45%); }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @keyframes pulse {
@@ -1680,7 +1698,7 @@ a {
   }
 
   .hero-stamp {
-    right: -20px;
+    right: 16px;
     width: 120px;
   }
 
@@ -1957,8 +1975,10 @@ a {
   }
 
   .hero-caption {
+    right: 12px;
     left: 12px;
-    bottom: -20px;
+    bottom: 12px;
+    min-width: 0;
   }
 
   .section {

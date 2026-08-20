@@ -120,14 +120,20 @@ export default function Home() {
 
       <div className="trust-rail" aria-label="مزايا الخدمة">
         <div className="trust-track">
-          <span>تصميم مخصص</span><i>◆</i>
-          <span>تفاصيل دقيقة</span><i>◆</i>
-          <span>تصنيع سعودي</span><i>◆</i>
-          <span>هوية واضحة</span><i>◆</i>
-          <span>خدمة للأعمال</span><i>◆</i>
-          <span aria-hidden="true">تصميم مخصص</span><i aria-hidden="true">◆</i>
-          <span aria-hidden="true">تفاصيل دقيقة</span><i aria-hidden="true">◆</i>
-          <span aria-hidden="true">تصنيع سعودي</span><i aria-hidden="true">◆</i>
+          <div className="trust-group">
+            <span>تصميم مخصص</span><i aria-hidden="true">◆</i>
+            <span>تفاصيل دقيقة</span><i aria-hidden="true">◆</i>
+            <span>تصنيع سعودي</span><i aria-hidden="true">◆</i>
+            <span>هوية واضحة</span><i aria-hidden="true">◆</i>
+            <span>خدمة للأعمال</span><i aria-hidden="true">◆</i>
+          </div>
+          <div className="trust-group" aria-hidden="true">
+            <span>تصميم مخصص</span><i>◆</i>
+            <span>تفاصيل دقيقة</span><i>◆</i>
+            <span>تصنيع سعودي</span><i>◆</i>
+            <span>هوية واضحة</span><i>◆</i>
+            <span>خدمة للأعمال</span><i>◆</i>
+          </div>
         </div>
       </div>
 

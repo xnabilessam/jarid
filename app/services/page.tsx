@@ -140,7 +140,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="section final-cta-section services-final-cta">
-        <div className="final-cta reveal">
+        <div className="final-cta">
           <img className="final-cta-icon" src="/brand/jarid-icon-gold.svg" alt="" />
           <span>جاهز تبدأ؟</span>
           <h2>أرسل الشعار أو المرجع.</h2>
