@@ -430,7 +430,7 @@ a {
 .hero-caption {
   position: absolute;
   left: 28px;
-  bottom: -28px;
+  bottom: 24px;
   min-width: 220px;
   padding: 13px 18px;
   border: 1px solid var(--line);
