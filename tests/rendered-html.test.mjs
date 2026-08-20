@@ -22,6 +22,21 @@ async function render(pathname = "/") {
   );
 }
 
+function visibleText(html) {
+  return html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function whatsappCtas(html) {
+  return html.match(
+    /<a\b(?=[^>]*href="http:\/\/wa\.me\/966506861016[^"]*")[^>]*>[\s\S]*?<\/a>/g,
+  ) ?? [];
+}
+
 test("يعرض الصفحة الرئيسية العربية وروابط التواصل", async () => {
   const response = await render();
   assert.equal(response.status, 200);
@@ -57,4 +72,27 @@ test("يعرض دعوة التواصل الأخيرة في صفحة الخدما
 
   assert.match(html, /class="final-cta"/);
   assert.doesNotMatch(html, /class="final-cta reveal"/);
+});
+
+test("يوحد تسمية دعوات التواصل باسم اطلب تصميمك", async () => {
+  for (const pathname of ["/", "/services", "/privacy", "/terms"]) {
+    const response = await render(pathname);
+    const html = await response.text();
+    const ctas = whatsappCtas(html);
+
+    assert.ok(ctas.length > 0, `لم تظهر دعوات التواصل في ${pathname}`);
+    for (const cta of ctas) {
+      assert.match(cta, /اطلب تصميمك/);
+      assert.doesNotMatch(cta, /واتساب|قالبك/);
+    }
+  }
+});
+
+test("يستخدم تصميم بدلاً من قالب المفردة في النص الظاهر", async () => {
+  for (const pathname of ["/", "/services", "/privacy", "/terms"]) {
+    const response = await render(pathname);
+    const text = visibleText(await response.text());
+
+    assert.doesNotMatch(text, /(^|\s)قالب(?:ك)?(?=$|\s|[.،؟])/);
+  }
 });

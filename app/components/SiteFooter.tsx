@@ -30,8 +30,7 @@ export function SiteFooter() {
           </div>
         </div>
         <WhatsAppLink className="footer-contact">
-          <span>جاهز تبدأ؟</span>
-          <strong>خلّنا نشوف فكرتك</strong>
+          <strong>اطلب تصميمك</strong>
           <i aria-hidden="true">↗</i>
         </WhatsAppLink>
       </div>

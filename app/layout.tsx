@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     shortcut: "/brand/jarid-icon-navy.svg",
   },
   openGraph: {
-    title: "جريد | فكرتك، قالبها جريد",
+    title: "جريد | فكرتك، تصميمها جريد",
     description:
       "قوالب سيليكون مخصصة للعلامات التجارية والمصانع في جميع أنحاء المملكة.",
     locale: "ar_SA",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "جريد | فكرتك، قالبها جريد",
+    title: "جريد | فكرتك، تصميمها جريد",
     description: "تصميم وتصنيع قوالب سيليكون مخصصة للأعمال.",
     images: ["/og.png"],
   },
@@ -52,9 +52,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         <div id="main-content">{children}</div>
         <SiteFooter />
-        <WhatsAppLink className="floating-whatsapp" aria-label="تواصل مع جريد عبر واتساب">
+        <WhatsAppLink className="floating-whatsapp" aria-label="اطلب تصميمك">
           <span className="floating-pulse" aria-hidden="true" />
-          واتساب
+          اطلب تصميمك
           <i aria-hidden="true">↗</i>
         </WhatsAppLink>
       </body>

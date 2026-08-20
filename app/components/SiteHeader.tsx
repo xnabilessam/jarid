@@ -28,7 +28,7 @@ export function SiteHeader() {
         </nav>
 
         <WhatsAppLink className="button button-navy header-cta">
-          ابدأ مشروعك <span aria-hidden="true">↗</span>
+          اطلب تصميمك <span aria-hidden="true">↗</span>
         </WhatsAppLink>
 
         <details className="mobile-menu">
@@ -42,7 +42,7 @@ export function SiteHeader() {
               ))}
             </nav>
             <WhatsAppLink className="button button-gold">
-              اطلب قالبك <span aria-hidden="true">↗</span>
+              اطلب تصميمك <span aria-hidden="true">↗</span>
             </WhatsAppLink>
           </div>
         </details>

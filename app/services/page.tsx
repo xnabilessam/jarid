@@ -44,19 +44,19 @@ export default function ServicesPage() {
       <section className="inner-hero services-hero">
         <div className="inner-hero-copy hero-enter hero-enter-1">
           <span className="section-kicker">خدمات جريد</span>
-          <h1>قالب مصمم حول احتياج منتجك.</h1>
+          <h1>تصميم يلائم احتياج منتجك.</h1>
           <p>
             من الشعار أو المرجع إلى نموذج قابل للتنفيذ، نطوّر حلاً يخدم
             المنتج والهوية معاً.
           </p>
           <WhatsAppLink className="button button-gold button-large">
-            شاركنا فكرتك <span aria-hidden="true">↗</span>
+            اطلب تصميمك <span aria-hidden="true">↗</span>
           </WhatsAppLink>
         </div>
         <div className="inner-hero-image hero-enter hero-enter-image">
           <img
             src="/images/craft-jarid.webp"
-            alt="تنفيذ قالب سيليكون مخصص للشوكولاتة"
+            alt="تنفيذ تصميم سيليكون مخصص للشوكولاتة"
             width="1000"
             height="1250"
           />
@@ -84,7 +84,7 @@ export default function ServicesPage() {
                 <h2>{service.title}</h2>
                 <p>{service.description}</p>
                 <WhatsAppLink className="card-cta">
-                  ناقش هذا الحل <span aria-hidden="true">↗</span>
+                  اطلب تصميمك <span aria-hidden="true">↗</span>
                 </WhatsAppLink>
               </div>
             </article>
@@ -146,7 +146,7 @@ export default function ServicesPage() {
           <h2>أرسل الشعار أو المرجع.</h2>
           <p>ونحوّل الفكرة إلى مسار تنفيذ واضح.</p>
           <WhatsAppLink className="button button-gold button-large">
-            تواصل عبر واتساب <span aria-hidden="true">↗</span>
+            اطلب تصميمك <span aria-hidden="true">↗</span>
           </WhatsAppLink>
         </div>
       </section>

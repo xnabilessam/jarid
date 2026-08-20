@@ -18,7 +18,7 @@ export default function TermsPage() {
         <aside>
           <span>استخدام واضح</span>
           <strong>الموقع تعريفي، وتفاصيل كل مشروع تعتمد بعد المراجعة.</strong>
-          <WhatsAppLink className="card-cta">ناقش مشروعك <span aria-hidden="true">↗</span></WhatsAppLink>
+          <WhatsAppLink className="card-cta">اطلب تصميمك <span aria-hidden="true">↗</span></WhatsAppLink>
         </aside>
         <article className="legal-content">
           <section>
@@ -48,7 +48,7 @@ export default function TermsPage() {
             <p>
               تختلف درجات الحرارة وحدود الاستخدام حسب ورقة بيانات السيليكون
               المختار. يجب اتباع المواصفات والتعليمات المعتمدة للمشروع عند
-              استخدام القالب.
+              استخدام التصميم.
             </p>
           </section>
           <section>

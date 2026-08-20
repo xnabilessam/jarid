@@ -39,7 +39,7 @@ const steps = [
 
 const faqs = [
   {
-    question: "هل يمكن تنفيذ قالب بشعار خاص؟",
+    question: "هل يمكن تنفيذ تصميم بشعار خاص؟",
     answer:
       "نعم، يمكن إضافة شعار أو نمط أو كتابة حسب قابلية التنفيذ وتفاصيل المشروع.",
   },
@@ -83,7 +83,7 @@ export default function Home() {
           </p>
           <div className="hero-actions hero-enter hero-enter-4">
             <WhatsAppLink className="button button-gold button-large">
-              اطلب قالبك عبر واتساب <span aria-hidden="true">↗</span>
+              اطلب تصميمك <span aria-hidden="true">↗</span>
             </WhatsAppLink>
             <a className="quiet-link" href="#solutions">
               استكشف الحلول <span aria-hidden="true">←</span>
@@ -100,7 +100,7 @@ export default function Home() {
           <div className="hero-image-wrap">
             <img
               src="/images/hero-jarid-cyan.webp"
-              alt="قالب سيليكون سيان مخصص مع تشكيلة شوكولاتة تحمل تفاصيل مستوحاة من النخلة"
+              alt="تصميم سيليكون سيان مخصص مع تشكيلة شوكولاتة تحمل تفاصيل مستوحاة من النخلة"
               width="1537"
               height="1023"
               fetchPriority="high"
@@ -141,7 +141,7 @@ export default function Home() {
         <div className="section-kicker reveal">عن جريد</div>
         <div className="about-grid">
           <div className="about-copy reveal">
-            <h2>القالب المتقن جزء من تجربة المنتج.</h2>
+            <h2>التصميم المتقن جزء من تجربة المنتج.</h2>
             <p>
               نطوّر قوالب سيليكون مخصصة للشوكولاتة والتيراميسو، تجمع بين
               الدقة البصرية والجودة العملية من الفكرة حتى التسليم.
@@ -155,7 +155,7 @@ export default function Home() {
           <div className="about-image reveal">
             <img
               src="/images/craft-jarid.webp"
-              alt="صب الشوكولاتة بعناية داخل قالب سيليكون مخصص"
+              alt="صب الشوكولاتة بعناية داخل تصميم سيليكون مخصص"
               width="1000"
               height="1250"
               loading="lazy"
@@ -188,7 +188,7 @@ export default function Home() {
               <h3>قوالب الشوكولاتة</h3>
               <p>للمواسم والمنتجات الخاصة، بمقاسات وتفاصيل تحمل هويتك.</p>
               <WhatsAppLink className="card-cta">
-                اطلب هذا الحل <span aria-hidden="true">↗</span>
+                اطلب تصميمك <span aria-hidden="true">↗</span>
               </WhatsAppLink>
             </div>
           </article>
@@ -207,7 +207,7 @@ export default function Home() {
               <span>لتقديم راقٍ</span>
               <h3>قوالب التيراميسو</h3>
               <p>تكوينات توازن بين التفاصيل والارتفاع وطريقة التقديم.</p>
-              <WhatsAppLink className="card-cta">ابدأ التصميم <span aria-hidden="true">↗</span></WhatsAppLink>
+              <WhatsAppLink className="card-cta">اطلب تصميمك <span aria-hidden="true">↗</span></WhatsAppLink>
             </div>
           </article>
 
@@ -218,8 +218,8 @@ export default function Home() {
             <div className="solution-copy">
               <span>للعلامات التجارية</span>
               <h3>تصميم خاص لبراندك</h3>
-              <p>شعار أو نمط أو كتابة تتحول إلى قالب قابل للتنفيذ.</p>
-              <WhatsAppLink className="card-cta card-cta-light">شاركنا فكرتك <span aria-hidden="true">↗</span></WhatsAppLink>
+              <p>شعار أو نمط أو كتابة تتحول إلى تصميم قابل للتنفيذ.</p>
+              <WhatsAppLink className="card-cta card-cta-light">اطلب تصميمك <span aria-hidden="true">↗</span></WhatsAppLink>
             </div>
           </article>
         </div>
@@ -230,7 +230,7 @@ export default function Home() {
           <div className="process-heading">
             <div>
               <span className="section-kicker section-kicker-light">رحلة العمل</span>
-              <h2>من مرجع بسيط إلى قالب جاهز.</h2>
+              <h2>من مرجع بسيط إلى تصميم جاهز.</h2>
             </div>
             <p>مسار واضح، ومراجعة قبل بدء التنفيذ.</p>
           </div>
@@ -246,7 +246,7 @@ export default function Home() {
             ))}
           </div>
           <WhatsAppLink className="button button-gold process-cta">
-            ابدأ رحلتك مع جريد <span aria-hidden="true">↗</span>
+            اطلب تصميمك <span aria-hidden="true">↗</span>
           </WhatsAppLink>
         </div>
       </section>
@@ -273,7 +273,7 @@ export default function Home() {
                 <h3>{product.name}</h3>
                 <p>{product.note}</p>
               </div>
-              <WhatsAppLink className="product-action" aria-label={`اطلب تصميماً مستوحى من ${product.name}`}>
+              <WhatsAppLink className="product-action" aria-label="اطلب تصميمك">
                 ↗
               </WhatsAppLink>
             </article>
@@ -321,11 +321,11 @@ export default function Home() {
       <section className="section final-cta-section">
         <div className="final-cta reveal">
           <img className="final-cta-icon" src="/brand/jarid-icon-gold.svg" alt="" />
-          <span>فكرتك تستاهل قالباً خاصاً</span>
-          <h2>صمّم قالباً يحمل هوية منتجك.</h2>
+          <span>فكرتك تستاهل تصميماً خاصاً</span>
+          <h2>حوّل فكرتك إلى تصميم يحمل هوية منتجك.</h2>
           <p>أرسل الفكرة أو الشعار، ونبدأ من هناك.</p>
           <WhatsAppLink className="button button-gold button-large">
-            تواصل مع جريد الآن <span aria-hidden="true">↗</span>
+            اطلب تصميمك <span aria-hidden="true">↗</span>
           </WhatsAppLink>
         </div>
       </section>

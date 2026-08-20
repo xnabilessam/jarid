@@ -18,7 +18,7 @@ export default function PrivacyPage() {
         <aside>
           <span>مختصر السياسة</span>
           <strong>نجمع فقط ما يلزم للرد على استفسارك وخدمة مشروعك.</strong>
-          <WhatsAppLink className="card-cta">اسألنا مباشرة <span aria-hidden="true">↗</span></WhatsAppLink>
+          <WhatsAppLink className="card-cta">اطلب تصميمك <span aria-hidden="true">↗</span></WhatsAppLink>
         </aside>
         <article className="legal-content">
           <section>
