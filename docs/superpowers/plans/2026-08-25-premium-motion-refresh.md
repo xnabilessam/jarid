@@ -46,7 +46,7 @@ Expected rendered hashes:
 
 ```text
 text:   a108120549b65d14779986804995c32c8900816da19963f89911e4884e2fbd33
-images: 33345bf13386cba60946e39ebecc33c68e6cd065e6c566506ba6c3876bd2cf51
+images: d25a734e9ea2eabf90a2bcea6870cf31f2edeacdfae06c5f37d2b2801a276158
 ```
 
 ### Task 2: Add progressive motion orchestration
@@ -98,7 +98,7 @@ At `1100px`, `860px`, and `600px`, remove desktop offsets and keep cards within 
 
 Run: `npm test`
 
-Expected: 21 tests, 0 failures.
+Expected: 23 tests, 0 failures.
 
 ### Task 4: Browser and repository verification
 
@@ -132,7 +132,7 @@ npm run lint
 npm test
 ```
 
-Expected: no navbar diff, no whitespace errors, lint exit 0, and 21 tests passing.
+Expected: no navbar diff, no whitespace errors, lint exit 0, and 23 tests passing.
 
 - [ ] **Step 5: Commit the verified implementation**
 

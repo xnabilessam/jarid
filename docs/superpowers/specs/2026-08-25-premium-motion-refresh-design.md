@@ -48,7 +48,7 @@ The direction is “quiet luxury / precision studio”: generous negative space,
 ## Acceptance checks
 
 - The rendered homepage text SHA-256 remains `a108120549b65d14779986804995c32c8900816da19963f89911e4884e2fbd33`.
-- The approved rendered homepage image-source SHA-256 is `33345bf13386cba60946e39ebecc33c68e6cd065e6c566506ba6c3876bd2cf51`.
+- The approved rendered homepage image-source SHA-256 is `d25a734e9ea2eabf90a2bcea6870cf31f2edeacdfae06c5f37d2b2801a276158`.
 - `app/components/SiteHeader.tsx` has no diff from base commit `283ccf1`.
 - Desktop and mobile have no horizontal overflow.
 - Motion respects reduced-motion preferences.

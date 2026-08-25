@@ -142,10 +142,10 @@ export default function Home() {
               <picture className="hero-picture">
                 <source
                   media="(max-width: 600px)"
-                  srcSet="/images/hero-jarid-luxury-v4.jpg"
+                  srcSet="/images/hero-jarid-approved-v5.jpg"
                 />
                 <img
-                  src="/images/hero-jarid-luxury-v4.jpg"
+                  src="/images/hero-jarid-approved-v5.jpg"
                   alt="قالب سيليكون سيان وقطع شوكولاتة تحمل شعار جريد الأصلي"
                   width="1536"
                   height="1024"
@@ -217,8 +217,8 @@ export default function Home() {
           <article className="solution-card reveal" data-motion-item data-motion-reveal="card">
             <div className="solution-photo">
               <img
-                src="/images/solution-tiramisu-studio-v3.jpg"
-                alt="تيراميسو بتصميم نخلة مخصص"
+                src="/images/solution-tiramisu-najdi-v4.jpg"
+                alt="تيراميسو بتصميم نجدي هندسي مخصص"
                 width="1536"
                 height="1024"
                 loading="lazy"
@@ -342,7 +342,7 @@ export default function Home() {
       </section>
 
       <section className="section comparison-section" id="comparison" data-motion-section="comparison">
-        <div className="section-heading reveal" data-motion-reveal="heading">
+        <div className="section-heading comparison-heading reveal" data-motion-reveal="heading">
           <div>
             <span className="section-kicker">الفرق واضح</span>
             <h2>اختيار يصنع الفرق لمنتجك</h2>

@@ -1022,7 +1022,7 @@ a {
 .comparison-section {
   width: 100%;
   max-width: none;
-  padding-inline: clamp(14px, 3vw, 42px);
+  padding-inline: var(--page-pad);
 }
 
 .comparison-shell {
@@ -2125,7 +2125,7 @@ a {
   }
 
   .comparison-section {
-    padding-inline: 14px;
+    padding-inline: var(--page-pad);
   }
 
   .comparison-shell {
@@ -2345,23 +2345,7 @@ a {
   min-height: min(860px, calc(100svh - 88px));
   grid-template-columns: minmax(390px, 0.82fr) minmax(560px, 1.18fr);
   gap: clamp(58px, 7.5vw, 126px);
-  overflow: hidden;
-}
-
-.motion-page .hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset-block: 11% 11%;
-  inset-inline-start: max(var(--page-pad), calc((100vw - 1520px) / 2));
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(17, 39, 54, 0.2) 22%,
-    rgba(17, 39, 54, 0.2) 78%,
-    transparent
-  );
+  overflow: visible;
 }
 
 .motion-page .hero-copy {
@@ -2378,11 +2362,15 @@ a {
 
 .motion-page .hero h1 {
   max-width: 650px;
+  overflow: visible;
+  padding-inline: 0.08em;
+  margin-inline: -0.08em;
   font-size: clamp(54px, 5.2vw, 84px);
   line-height: 1.2;
 }
 
 .motion-page .hero-title-line {
+  overflow: visible;
   transform-origin: right center;
   animation: jarid-title-line 880ms var(--motion-ease) both;
 }
@@ -2740,6 +2728,11 @@ a {
   padding-block: clamp(90px, 9vw, 140px) clamp(120px, 11vw, 174px);
 }
 
+.motion-page .comparison-heading {
+  width: min(100%, calc(var(--max) - (var(--page-pad) * 2)));
+  margin-inline: auto;
+}
+
 .motion-page .comparison-shell {
   border-radius: 36px 130px 36px 36px;
   box-shadow:
@@ -2931,7 +2924,7 @@ html.motion-ready .motion-page [data-motion-item].is-visible {
   }
   to {
     opacity: 1;
-    clip-path: inset(0);
+    clip-path: inset(-0.28em -0.12em -0.3em -0.12em);
     transform: translateY(0);
   }
 }
@@ -3005,10 +2998,6 @@ html.motion-ready .motion-page [data-motion-item].is-visible {
   .motion-page .hero {
     grid-template-columns: 1fr;
     gap: 48px;
-  }
-
-  .motion-page .hero::before {
-    display: none;
   }
 
   .motion-page .hero-copy {

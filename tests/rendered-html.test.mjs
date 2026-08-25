@@ -1,6 +1,13 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import test from "node:test";
+
+const homepageStyles = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+const motionControllerSource = readFileSync(
+  new URL("../app/components/MotionController.tsx", import.meta.url),
+  "utf8",
+);
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -90,7 +97,7 @@ test("يعرض صورة هيرو فاخرة متجاوبة داخل إطار ي�
 
   assert.ok(picture, "يجب استخدام picture لصورة هيرو المتجاوبة");
   assert.match(picture, /<source\b[^>]*media="\(max-width:\s*600px\)"/i);
-  assert.match(picture, /\/images\/hero-jarid-luxury-v4\.jpg/i);
+  assert.match(picture, /\/images\/hero-jarid-approved-v5\.jpg/i);
   assert.doesNotMatch(picture, /hero-jarid-(?:logo-v3|studio-(?:mobile|desktop)-v2)\.(?:jpe?g|webp|png)/i);
 });
 
@@ -176,10 +183,33 @@ test("يعرض خدمات قطاع الحلويات والنصوص المحدث�
     "solution-bear-studio-v3.jpg",
     "solution-incense-studio-v3.jpg",
     "solution-dallah-studio-v3.jpg",
-    "solution-tiramisu-studio-v3.jpg",
+    "solution-tiramisu-najdi-v4.jpg",
   ]) {
     assert.match(solutions, new RegExp(`/images/${image.replace(".", "\\.")}`, "i"));
   }
+});
+
+test("يحمي عنوان الهيرو من القص ويحاذي عنوان المقارنة مع بقية الأقسام", async () => {
+  const html = await (await render()).text();
+  const comparison = sectionById(html, "comparison");
+
+  assert.ok(comparison, "لم يظهر قسم المقارنة");
+  assert.match(comparison, /class="[^"]*\bcomparison-heading\b[^"]*"/i);
+  assert.doesNotMatch(
+    homepageStyles,
+    /\.motion-page\s+\.hero::before\s*\{[^}]*content\s*:\s*["']{2}/s,
+    "يجب إزالة الخط الزخرفي المجاور لمحتوى الهيرو",
+  );
+  assert.match(
+    homepageStyles,
+    /\.motion-page\s+\.hero-title-line\s*\{[^}]*overflow\s*:\s*visible/s,
+    "يجب ترك حروف عنوان الهيرو ظاهرة بالكامل",
+  );
+  assert.match(
+    homepageStyles,
+    /\.motion-page\s+\.comparison-heading\s*\{[^}]*width\s*:\s*min\(100%,\s*calc\(var\(--max\)\s*-\s*\(var\(--page-pad\)\s*\*\s*2\)\)\)/s,
+    "يجب محاذاة عنوان المقارنة مع مسار عناوين الأقسام",
+  );
 });
 
 test("يعرض مراحل الفكرة والرسم والتصميم ثلاثي الأبعاد والقالب النهائي", async () => {
@@ -324,7 +354,7 @@ test("يحافظ تحديث الحركة على مجموعة الصور المع
   assert.equal(sources.length, 29, "يجب ألا يضاف أو يحذف أي عنصر صورة");
   assert.equal(
     sha256(JSON.stringify(sources)),
-    "33345bf13386cba60946e39ebecc33c68e6cd065e6c566506ba6c3876bd2cf51",
+    "d25a734e9ea2eabf90a2bcea6870cf31f2edeacdfae06c5f37d2b2801a276158",
     "يجب أن تبقى مصادر الصور المعتمدة وترتيبها ثابتة",
   );
 });
@@ -347,6 +377,18 @@ test("يهيئ الصفحة الرئيسية لنظام الحركة المنظ�
 
   const motionItems = main.match(/data-motion-item(?:="[^"]*")?/gi) ?? [];
   assert.ok(motionItems.length >= 20, "يجب أن تكون حركة العناصر المتكررة متتابعة ومنظمة");
+});
+
+test("يحترم نظام الحركة إعداد تقليل الحركة", () => {
+  assert.match(
+    motionControllerSource,
+    /matchMedia\(["']\(prefers-reduced-motion:\s*reduce\)["']\)/,
+  );
+  assert.match(homepageStyles, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+  assert.match(
+    homepageStyles,
+    /\.motion-page\s+\[data-motion-parallax\][\s\S]*?translate\s*:\s*0\s*!important/,
+  );
 });
 
 test("يعرض زر واتساب العائم أيقونة واتساب واحدة فقط", async () => {
