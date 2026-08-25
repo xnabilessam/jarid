@@ -9,16 +9,13 @@ export function SiteFooter() {
           <Link className="footer-logo" href="/" aria-label="جريد - الرئيسية">
             <img src="/brand/jarid-secondary-beige.svg" alt="جريد" />
           </Link>
-          <p>
-            حلول قوالب السيليكون للشوكولاتة والتيراميسو. تصميم حسب الطلب،
-            تصنيع محلي، وخدمة تشمل جميع أنحاء المملكة.
-          </p>
+          <p>قوالب سيليكون سعودية، مصممة لهوية علامتك.</p>
         </div>
         <div className="footer-links">
           <div>
             <h2>روابط سريعة</h2>
             <Link href="/">الرئيسية</Link>
-            <Link href="/services">الخدمات</Link>
+            <Link href="/#solutions">الخدمات</Link>
             <Link href="/#work">أعمالنا</Link>
             <Link href="/#faq">الأسئلة الشائعة</Link>
           </div>
@@ -30,8 +27,7 @@ export function SiteFooter() {
           </div>
         </div>
         <WhatsAppLink className="footer-contact">
-          <strong>اطلب تصميمك</strong>
-          <i aria-hidden="true">↗</i>
+          <strong>تواصل معنا</strong>
         </WhatsAppLink>
       </div>
       <div className="footer-bottom">

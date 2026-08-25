@@ -18,7 +18,7 @@ export default function TermsPage() {
         <aside>
           <span>استخدام واضح</span>
           <strong>الموقع تعريفي، وتفاصيل كل مشروع تعتمد بعد المراجعة.</strong>
-          <WhatsAppLink className="card-cta">اطلب تصميمك <span aria-hidden="true">↗</span></WhatsAppLink>
+          <WhatsAppLink className="card-cta">تواصل معنا</WhatsAppLink>
         </aside>
         <article className="legal-content">
           <section>

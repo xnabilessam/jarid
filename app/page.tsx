@@ -10,31 +10,70 @@ export const metadata: Metadata = {
 const products = [
   {
     name: "بخور",
-    note: "هوية ضيافة محلية",
     image: "/images/product-incense.webp",
   },
   {
     name: "دب",
-    note: "للمواسم والهدايا",
     image: "/images/product-bear.webp",
   },
   {
     name: "دلة",
-    note: "طابع سعودي مميز",
     image: "/images/product-dallah.webp",
   },
   {
     name: "ثوب",
-    note: "تفاصيل تراثية معاصرة",
     image: "/images/product-thobe.webp",
   },
 ];
 
 const steps = [
-  ["١", "مشاركة الفكرة", "أرسل المرجع أو الشعار"],
-  ["٢", "تطوير التصميم", "نضبط الشكل والأبعاد"],
-  ["٣", "اعتماد النموذج", "تراجع التفاصيل قبل التنفيذ"],
-  ["٤", "التنفيذ والتسليم", "وفق المواصفات المعتمدة"],
+  { number: "٠١", title: "الفكرة والرسم المبدئي", visual: "sketch" },
+  { number: "٠٢", title: "التصميم ثلاثي الأبعاد", visual: "model" },
+  { number: "٠٣", title: "شكل القالب النهائي", visual: "mold" },
+  { number: "٠٤", title: "المنتج النهائي", visual: "finished" },
+];
+
+const comparisons = [
+  {
+    feature: "الأمان الصحي",
+    jarid: "سلكون مخصص للأغذية بشهادات مخبرية معتمدة وآمنة 100%",
+    market: "خامات مجهولة المصدر وغير مسجلة بلا توثيق صحي",
+  },
+  {
+    feature: "الرائحة والطعم",
+    jarid: "سلكون آمن لا يترك أي رائحة كيميائية ولا يؤثر على طعم المنتجات",
+    market: "روائح بلاستيكية كيميائية مزعجة قد تنتقل للأطعمة أو المنتجات",
+  },
+  {
+    feature: "حد الطلب (المرونة)",
+    jarid: "مرونة كاملة: صمّم قالبك الخاص بدءًا من قطعة واحدة (بدون حد أدنى للطلبات)",
+    market: "تشترط كميات ضخمة ومكلفة للبدء بالتصنيع",
+  },
+  {
+    feature: "سرعة التنفيذ والمنشأ",
+    jarid: "تصميم وتنفيذ سعودي بجودة عالية وبأسرع وقت",
+    market: "شحن دولي بطيء ومستهلك للوقت والمال",
+  },
+  {
+    feature: "عدد مرات الاستعمال",
+    jarid: "خامة عالية الجودة تُستعمل عدة مرات دون أن تفقد مرونتها أو شكلها",
+    market: "عمر افتراضي قصير وتتلف أو تتشقق بعد مرات استخدام معدودة",
+  },
+  {
+    feature: "الدقة والتفاصيل",
+    jarid: "تنفيذ دقيق وعالي، يظهر أدق تفاصيل التصميم",
+    market: "تفاصيل بصرية ضعيفة أو مشوهة بعد الاستخدام",
+  },
+  {
+    feature: "متانة وحرارة السلكون",
+    jarid: "سلكون مرن وقوي يتحمل درجات الحرارة العالية والبرودة",
+    market: "سلكون ضعيف يتشقق وسريع التلف مع الحرارة",
+  },
+  {
+    feature: "سهولة الاستخراج",
+    jarid: "مرونة ممتازة تسمح بنزع المنتج بسهولة دون أن ينكسر",
+    market: "صلابة أو التصاق يؤدي لتلف المنتجات أثناء الفك",
+  },
 ];
 
 const faqs = [
@@ -63,6 +102,10 @@ const faqs = [
     answer:
       "نعم، نخدم المصانع والعلامات التجارية ومحال الحلويات في جميع أنحاء المملكة.",
   },
+  {
+    question: "هل تقدمون عينات قبل اعتماد الطلب؟",
+    answer: "نعم، نقدم عينات وكل ما يحتاجه العميل قبل اعتماد الطلب.",
+  },
 ];
 
 export default function Home() {
@@ -71,28 +114,23 @@ export default function Home() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
           <div className="hero-eyebrow hero-enter hero-enter-1">
-            <span className="eyebrow-dot" /> مصنع سعودي في الرياض
+            <span className="eyebrow-dot" /> صناعة سعودية
           </div>
           <h1 id="hero-title" className="hero-enter hero-enter-2">
-            قوالب مخصصة
-            <span>تُحوّل فكرتك إلى منتج يُبهر.</span>
+            <span className="hero-title-line hero-title-primary">قوالب إبداعية،</span>
+            <span className="hero-title-line">تميّز علامتك التجارية</span>
           </h1>
           <p className="hero-lead hero-enter hero-enter-3">
-            نصمم وننفذ قوالب سيليكون للعلامات التجارية والمصانع، بدقة
-            تعكس هوية منتجك.
+            مواكبةً لمتطلبات السوق السعودي العالية في قطاع الحلويات: تأتي جَـريـد
+            لتلبية هذي المتطلبات بتصاميم أصيلة، وتنفيذ بمقاييس عالمية.
           </p>
           <div className="hero-actions hero-enter hero-enter-4">
             <WhatsAppLink className="button button-gold button-large">
-              اطلب تصميمك <span aria-hidden="true">↗</span>
+              تواصل معنا
             </WhatsAppLink>
             <a className="quiet-link" href="#solutions">
               استكشف الحلول <span aria-hidden="true">←</span>
             </a>
-          </div>
-          <div className="hero-proof hero-enter hero-enter-5" aria-label="مزايا جريد">
-            <span>تصميم حسب الطلب</span>
-            <span>تصنيع محلي</span>
-            <span>خدمة داخل المملكة</span>
           </div>
         </div>
 
@@ -102,66 +140,33 @@ export default function Home() {
               <picture className="hero-picture">
                 <source
                   media="(max-width: 600px)"
-                  srcSet="/images/hero-jarid-studio-mobile-v2.jpg"
+                  srcSet="/images/hero-jarid-logo-v3.jpg"
                 />
                 <img
-                  src="/images/hero-jarid-studio-desktop-v2.jpg"
-                  alt="قالب سيليكون سيان مخصص مع قطع شوكولاتة تظهر دقة التفاصيل"
+                  src="/images/hero-jarid-logo-v3.jpg"
+                  alt="قالب سيليكون سيان وقطع شوكولاتة تحمل شعار جريد الأصلي"
                   width="1536"
                   height="1024"
                   fetchPriority="high"
                 />
               </picture>
             </div>
-
-            <div className="hero-info-strip">
-              <div className="hero-stage-badge" aria-label="من الفكرة إلى الإنتاج">
-                <img src="/brand/jarid-icon-gold.svg" alt="" />
-                <span>من الفكرة <strong>إلى الإنتاج</strong></span>
-              </div>
-
-              <ul className="hero-facts" aria-label="تفاصيل التصميم">
-                <li>
-                  <span className="hero-fact-mark" aria-hidden="true" />
-                  <strong>تفاصيل دقيقة</strong>
-                </li>
-                <li>
-                  <span className="hero-fact-mark" aria-hidden="true" />
-                  <strong>سيليكون مخصص للمشروع</strong>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
-
-      <div className="trust-rail" aria-label="مزايا الخدمة">
-        <div className="trust-track">
-          <div className="trust-group">
-            <span>تصميم مخصص</span><i aria-hidden="true">◆</i>
-            <span>تفاصيل دقيقة</span><i aria-hidden="true">◆</i>
-            <span>تصنيع سعودي</span><i aria-hidden="true">◆</i>
-            <span>هوية واضحة</span><i aria-hidden="true">◆</i>
-            <span>خدمة للأعمال</span><i aria-hidden="true">◆</i>
-          </div>
-          <div className="trust-group" aria-hidden="true">
-            <span>تصميم مخصص</span><i>◆</i>
-            <span>تفاصيل دقيقة</span><i>◆</i>
-            <span>تصنيع سعودي</span><i>◆</i>
-            <span>هوية واضحة</span><i>◆</i>
-            <span>خدمة للأعمال</span><i>◆</i>
-          </div>
-        </div>
-      </div>
 
       <section className="section about-section" id="about">
         <div className="section-kicker reveal">عن جريد</div>
         <div className="about-grid">
           <div className="about-copy reveal">
-            <h2>التصميم المتقن جزء من تجربة المنتج.</h2>
+            <h2>
+              التصميم <span className="about-emphasis">المتقن</span> جزء من تجربة المنتج
+            </h2>
             <p>
-              نطوّر قوالب سيليكون مخصصة للشوكولاتة والتيراميسو، تجمع بين
-              الدقة البصرية والجودة العملية من الفكرة حتى التسليم.
+              نطوّر <strong className="about-emphasis">قوالب سيليكون مخصصة</strong>
+              {" "}للشوكولاتة والتيراميسو، تجمع بين
+              {" "}<strong className="about-emphasis">الدقة</strong> و
+              <strong className="about-emphasis">الجودة</strong> من الفكرة حتى التسليم.
             </p>
             <div className="about-points">
               <div><strong>هوية</strong><span>شعار ونقش وتفاصيل خاصة</span></div>
@@ -186,11 +191,8 @@ export default function Home() {
         <div className="section-heading reveal">
           <div>
             <span className="section-kicker">حلول جريد</span>
-            <h2>حل مصمم حول منتجك.</h2>
+            <h2>خدمات قطاع الحلويات</h2>
           </div>
-          <a className="quiet-link" href="/services">
-            شاهد جميع الخدمات <span aria-hidden="true">←</span>
-          </a>
         </div>
 
         <div className="solutions-grid">
@@ -203,9 +205,9 @@ export default function Home() {
             <div className="solution-copy">
               <span>للضيافة والهدايا</span>
               <h3>قوالب الشوكولاتة</h3>
-              <p>للمواسم والمنتجات الخاصة، بمقاسات وتفاصيل تحمل هويتك.</p>
+              <p>للمواسم والمناسبات الخاصة، بمقاسات وتفاصيل مخصصة.</p>
               <WhatsAppLink className="card-cta">
-                اطلب تصميمك <span aria-hidden="true">↗</span>
+                تواصل معنا
               </WhatsAppLink>
             </div>
           </article>
@@ -223,8 +225,8 @@ export default function Home() {
             <div className="solution-copy">
               <span>لتقديم راقٍ</span>
               <h3>قوالب التيراميسو</h3>
-              <p>تكوينات توازن بين التفاصيل والارتفاع وطريقة التقديم.</p>
-              <WhatsAppLink className="card-cta">اطلب تصميمك <span aria-hidden="true">↗</span></WhatsAppLink>
+              <p>بساطة وإبداع في التقديم.</p>
+              <WhatsAppLink className="card-cta">تواصل معنا</WhatsAppLink>
             </div>
           </article>
 
@@ -235,8 +237,9 @@ export default function Home() {
             <div className="solution-copy">
               <span>للعلامات التجارية</span>
               <h3>تصميم خاص لبراندك</h3>
-              <p>شعار أو نمط أو كتابة تتحول إلى تصميم قابل للتنفيذ.</p>
-              <WhatsAppLink className="card-cta card-cta-light">اطلب تصميمك <span aria-hidden="true">↗</span></WhatsAppLink>
+              <WhatsAppLink className="card-cta card-cta-light">
+                تواصل معنا
+              </WhatsAppLink>
             </div>
           </article>
         </div>
@@ -246,24 +249,64 @@ export default function Home() {
         <div className="process-shell reveal">
           <div className="process-heading">
             <div>
-              <span className="section-kicker section-kicker-light">رحلة العمل</span>
-              <h2>من مرجع بسيط إلى تصميم جاهز.</h2>
+              <span className="section-kicker section-kicker-light">رحلة المنتج</span>
+              <h2>من الفكرة إلى النتيجة النهائية</h2>
             </div>
-            <p>مسار واضح، ومراجعة قبل بدء التنفيذ.</p>
           </div>
-          <div className="mold-tray">
-            {steps.map(([number, title, note]) => (
-              <div className="mold-cavity" key={number}>
-                <span>{number}</span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{note}</p>
+          <div className="journey-grid">
+            {steps.map((step) => (
+              <article className="journey-card" key={step.number}>
+                <div className={`journey-visual journey-${step.visual}`} aria-hidden="true">
+                  {step.visual === "sketch" && (
+                    <img src="/brand/jarid-icon-navy.svg" alt="" />
+                  )}
+                  {step.visual === "model" && (
+                    <>
+                      <img
+                        className="model-icon model-icon-back"
+                        src="/brand/jarid-icon-gold.svg"
+                        alt=""
+                      />
+                      <img
+                        className="model-icon model-icon-middle"
+                        src="/brand/jarid-icon-gold.svg"
+                        alt=""
+                      />
+                      <img
+                        className="model-icon model-icon-front"
+                        src="/brand/jarid-icon-gold.svg"
+                        alt=""
+                      />
+                    </>
+                  )}
+                  {step.visual === "mold" && (
+                    <div className="mold-icons">
+                      {[1, 2, 3, 4, 5, 6].map((cavity) => (
+                        <img
+                          key={cavity}
+                          src="/brand/jarid-icon-navy.svg"
+                          alt=""
+                        />
+                      ))}
+                    </div>
+                  )}
+                  {step.visual === "finished" && (
+                    <img
+                      src="/images/service-chocolate-plate-v2.png"
+                      alt=""
+                      loading="lazy"
+                    />
+                  )}
                 </div>
-              </div>
+                <div className="journey-copy">
+                  <span className="journey-index">{step.number}</span>
+                  <h3>{step.title}</h3>
+                </div>
+              </article>
             ))}
           </div>
           <WhatsAppLink className="button button-gold process-cta">
-            اطلب تصميمك <span aria-hidden="true">↗</span>
+            تواصل معنا
           </WhatsAppLink>
         </div>
       </section>
@@ -272,9 +315,8 @@ export default function Home() {
         <div className="section-heading reveal">
           <div>
             <span className="section-kicker">من الكتالوج</span>
-            <h2>تفاصيل محلية، بصياغة معاصرة.</h2>
+            <h2>تفاصيل محلية، بصياغة معاصرة</h2>
           </div>
-          <p>نماذج قابلة لتخصيص المقاس والتفاصيل.</p>
         </div>
         <div className="product-track reveal">
           {products.map((product) => (
@@ -286,40 +328,52 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-              <div>
+              <div className="product-meta">
                 <h3>{product.name}</h3>
-                <p>{product.note}</p>
+                <WhatsAppLink className="product-action" aria-label="تواصل معنا">
+                  تواصل معنا
+                </WhatsAppLink>
               </div>
-              <WhatsAppLink className="product-action" aria-label="اطلب تصميمك">
-                ↗
-              </WhatsAppLink>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section standards-section">
-        <div className="standards-intro reveal">
-          <span className="section-kicker">لماذا جريد؟</span>
-          <h2>دقة بصرية وجودة عملية.</h2>
-          <p>
-            تُصنع القوالب من سيليكون مناسب للتلامس الغذائي بحسب مواصفات
-            المادة وشهادات المورد المتاحة لكل مشروع.
-          </p>
+      <section className="section comparison-section" id="comparison">
+        <div className="section-heading reveal">
+          <div>
+            <span className="section-kicker">الفرق واضح</span>
+            <h2>اختيار يصنع الفرق لمنتجك</h2>
+          </div>
         </div>
-        <div className="standards-grid reveal">
-          <div><span>01</span><h3>تفاصيل دقيقة</h3><p>ملائمة للنقوش والشعارات الصغيرة.</p></div>
-          <div><span>02</span><h3>فك أسهل</h3><p>مرونة تساعد على حفظ تفاصيل القطعة.</p></div>
-          <div><span>03</span><h3>استخدام متكرر</h3><p>خامة عملية ضمن ظروف التشغيل الموصى بها.</p></div>
-          <div><span>04</span><h3>تخصيص مرن</h3><p>المقاس واللون والصلادة حسب المشروع.</p></div>
+        <div className="comparison-shell reveal">
+          <table className="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">الميزة</th>
+                <th scope="col">قوالب جَريـد ✨</th>
+                <th scope="col">القوالب التجارية ❌</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisons.map((comparison) => (
+                <tr key={comparison.feature}>
+                  <th scope="row" className="comparison-feature">
+                    {comparison.feature}
+                  </th>
+                  <td className="comparison-jarid">{comparison.jarid}</td>
+                  <td className="comparison-market">{comparison.market}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
       <section className="section faq-section" id="faq">
         <div className="faq-heading reveal">
           <span className="section-kicker">الأسئلة الشائعة</span>
-          <h2>قبل أن تبدأ.</h2>
-          <p>إجابات مباشرة تساعدك على تجهيز فكرتك.</p>
+          <h2>قبل أن تبدأ</h2>
         </div>
         <div className="faq-list reveal">
           {faqs.map((faq, index) => (
@@ -327,7 +381,9 @@ export default function Home() {
               <summary>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {faq.question}
-                <i aria-hidden="true">+</i>
+                <i className="faq-indicator" aria-hidden="true">
+                  <img src="/brand/jarid-icon-gold.svg" alt="" />
+                </i>
               </summary>
               <p>{faq.answer}</p>
             </details>
@@ -338,11 +394,10 @@ export default function Home() {
       <section className="section final-cta-section">
         <div className="final-cta reveal">
           <img className="final-cta-icon" src="/brand/jarid-icon-gold.svg" alt="" />
-          <span>فكرتك تستاهل تصميماً خاصاً</span>
-          <h2>حوّل فكرتك إلى تصميم يحمل هوية منتجك.</h2>
-          <p>أرسل الفكرة أو الشعار، ونبدأ من هناك.</p>
+          <h2>جاهز تبدأ؟</h2>
+          <p>أرسل متطلباتك وبنحولها إلى منتج يناسبك</p>
           <WhatsAppLink className="button button-gold button-large">
-            اطلب تصميمك <span aria-hidden="true">↗</span>
+            تواصل معنا
           </WhatsAppLink>
         </div>
       </section>
