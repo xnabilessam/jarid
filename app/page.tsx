@@ -260,7 +260,10 @@ export default function Home() {
               <article className="journey-card" key={step.number} data-motion-item data-motion-reveal="card">
                 <div className={`journey-visual journey-${step.visual}`} aria-hidden="true">
                   {step.visual === "sketch" && (
-                    <img src="/brand/jarid-icon-navy.svg" alt="" />
+                    <div className="sketch-mark">
+                      <img src="/brand/jarid-icon-navy.svg" alt="" />
+                      <span />
+                    </div>
                   )}
                   {step.visual === "model" && (
                     <>

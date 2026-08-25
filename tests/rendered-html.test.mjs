@@ -263,6 +263,19 @@ test("يوضح قالب السيليكون السيان ويكبر المنتج 
   );
 });
 
+test("يعرض الفكرة الأولى كرسم قلم رصاص يحمل علامة جريد", () => {
+  assert.match(
+    homepageStyles,
+    /\.sketch-mark::before\s*\{[^}]*mask\s*:\s*url\("\/brand\/jarid-icon-navy\.svg"\)[^}]*background\s*:\s*repeating-linear-gradient/s,
+    "يجب بناء علامة المرحلة الأولى بخطوط قلم رصاص متقاطعة",
+  );
+  assert.match(
+    homepageStyles,
+    /\.sketch-mark\s*>\s*span\s*\{[^}]*border\s*:\s*1px\s+dashed[^}]*transform\s*:[^;]*rotate/s,
+    "يجب إظهار خطوط الإنشاء المحيطة بالرسم المبدئي",
+  );
+});
+
 test("يقارن قوالب جريد والقوالب التجارية عبر المزايا الثماني المطلوبة", async () => {
   const html = await (await render()).text();
   const table = html.match(/<table\b[^>]*>[\s\S]*?<\/table>/i)?.[0];
