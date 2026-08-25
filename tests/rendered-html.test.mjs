@@ -212,6 +212,24 @@ test("يحمي عنوان الهيرو من القص ويحاذي عنوان ا�
   );
 });
 
+test("يمنع حركة الظهور من قص الحروف العربية في جميع العناوين", () => {
+  const revealedRule = homepageStyles.match(
+    /html\.motion-ready\s+\.motion-page\s+\[data-motion-reveal\]\.is-visible,\s*html\.motion-ready\s+\.motion-page\s+\[data-motion-item\]\.is-visible\s*\{([^}]*)\}/s,
+  )?.[1];
+
+  assert.ok(revealedRule, "لم يتم العثور على حالة الظهور المشتركة");
+  assert.doesNotMatch(
+    revealedRule,
+    /clip-path\s*:/,
+    "يجب ألا يطبق مسار قص عام على العناوين بعد ظهورها",
+  );
+  assert.match(
+    homepageStyles,
+    /html\.motion-ready\s+\.motion-page\s+\[data-motion-reveal="media"\]\.is-visible\s*\{[^}]*clip-path\s*:\s*inset\(0\s+round\s+0\)/s,
+    "يجب حصر نهاية حركة القص في الصور فقط",
+  );
+});
+
 test("يعرض مراحل الفكرة والرسم والتصميم ثلاثي الأبعاد والقالب النهائي", async () => {
   const html = await (await render()).text();
   const process = sectionById(html, "process");

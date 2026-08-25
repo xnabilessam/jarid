@@ -2912,8 +2912,11 @@ html.motion-ready .motion-page [data-motion-item].is-visible {
   opacity: 1;
   translate: 0 0;
   scale: 1;
-  clip-path: inset(0 round 0);
   will-change: auto;
+}
+
+html.motion-ready .motion-page [data-motion-reveal="media"].is-visible {
+  clip-path: inset(0 round 0);
 }
 
 @keyframes jarid-title-line {
