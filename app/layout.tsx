@@ -53,7 +53,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div id="main-content">{children}</div>
         <SiteFooter />
         <WhatsAppLink className="floating-whatsapp" aria-label="تواصل معنا">
-          <span className="floating-pulse" aria-hidden="true" />
           تواصل معنا
         </WhatsAppLink>
       </body>

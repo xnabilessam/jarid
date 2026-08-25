@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
 
 async function render(pathname = "/") {
@@ -43,6 +44,18 @@ function sectionById(html, id) {
   )?.[0];
 }
 
+function mainMarkup(html) {
+  return html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] ?? "";
+}
+
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+function imageSources(markup) {
+  return [...markup.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map(([, src]) => src);
+}
+
 test("يعرض الصفحة الرئيسية العربية وروابط التواصل", async () => {
   const response = await render();
   assert.equal(response.status, 200);
@@ -71,14 +84,14 @@ test("يعرض الهوية السعودية والنص التعريفي الم�
   );
 });
 
-test("يعرض صورة هيرو متجاوبة تحمل الشعار المعتمد", async () => {
+test("يعرض صورة هيرو فاخرة متجاوبة داخل إطار يحمل الشعار المعتمد", async () => {
   const html = await (await render()).text();
   const picture = html.match(/<picture\b[\s\S]*?<\/picture>/i)?.[0];
 
   assert.ok(picture, "يجب استخدام picture لصورة هيرو المتجاوبة");
   assert.match(picture, /<source\b[^>]*media="\(max-width:\s*600px\)"/i);
-  assert.match(picture, /\/images\/hero-jarid-logo-v3\.(?:jpe?g|webp|png)/i);
-  assert.doesNotMatch(picture, /hero-jarid-studio-(?:mobile|desktop)-v2\.jpg/i);
+  assert.match(picture, /\/images\/hero-jarid-luxury-v4\.jpg/i);
+  assert.doesNotMatch(picture, /hero-jarid-(?:logo-v3|studio-(?:mobile|desktop)-v2)\.(?:jpe?g|webp|png)/i);
 });
 
 test("يحذف شريط الإعلان وشريط المزايا الذهبي من الصفحة", async () => {
@@ -159,6 +172,14 @@ test("يعرض خدمات قطاع الحلويات والنصوص المحدث�
   );
   assert.ok(visibleText(solutions).includes("بساطة وإبداع في التقديم."));
   assert.doesNotMatch(solutions, /href="\/services(?:["/?#])/i);
+  for (const image of [
+    "solution-bear-studio-v3.jpg",
+    "solution-incense-studio-v3.jpg",
+    "solution-dallah-studio-v3.jpg",
+    "solution-tiramisu-studio-v3.jpg",
+  ]) {
+    assert.match(solutions, new RegExp(`/images/${image.replace(".", "\\.")}`, "i"));
+  }
 });
 
 test("يعرض مراحل الفكرة والرسم والتصميم ثلاثي الأبعاد والقالب النهائي", async () => {
@@ -282,4 +303,59 @@ test("يعرض عناوين الصفحة الرئيسية دون نقاط ختا
   for (const heading of headings) {
     assert.doesNotMatch(heading, /[.。]\s*$/, `ينتهي العنوان بنقطة زائدة: ${heading}`);
   }
+});
+
+test("يحافظ تحديث الحركة على النصوص الحالية دون أي تغيير", async () => {
+  const html = await (await render()).text();
+  const main = mainMarkup(html);
+
+  assert.ok(main, "لم يظهر محتوى الصفحة الرئيسية");
+  assert.equal(
+    sha256(visibleText(main)),
+    "a108120549b65d14779986804995c32c8900816da19963f89911e4884e2fbd33",
+    "يجب أن تبقى كل نصوص الصفحة الرئيسية مطابقة قبل وبعد تحديث الحركة",
+  );
+});
+
+test("يحافظ تحديث الحركة على مجموعة الصور المعتمدة وترتيبها", async () => {
+  const html = await (await render()).text();
+  const sources = imageSources(mainMarkup(html));
+
+  assert.equal(sources.length, 29, "يجب ألا يضاف أو يحذف أي عنصر صورة");
+  assert.equal(
+    sha256(JSON.stringify(sources)),
+    "33345bf13386cba60946e39ebecc33c68e6cd065e6c566506ba6c3876bd2cf51",
+    "يجب أن تبقى مصادر الصور المعتمدة وترتيبها ثابتة",
+  );
+});
+
+test("يهيئ الصفحة الرئيسية لنظام الحركة المنظم", async () => {
+  const html = await (await render()).text();
+  const main = mainMarkup(html);
+
+  assert.match(main, /<main\b[^>]*data-motion-root="home"/i);
+  assert.match(main, /data-motion-controller="jarid"/i);
+
+  const motionSections = main.match(/<section\b(?=[^>]*data-motion-section(?:="[^"]*")?)[^>]*>/gi) ?? [];
+  assert.equal(motionSections.length, 8, "يجب تنسيق حركة أقسام الصفحة الرئيسية الثمانية");
+
+  for (const id of ["solutions", "process", "work", "comparison", "faq"]) {
+    const section = sectionById(main, id);
+    assert.ok(section, `لم يظهر القسم ${id}`);
+    assert.match(section, /data-motion-group/i, `قسم ${id} لا يملك تنسيق حركة جماعيًا`);
+  }
+
+  const motionItems = main.match(/data-motion-item(?:="[^"]*")?/gi) ?? [];
+  assert.ok(motionItems.length >= 20, "يجب أن تكون حركة العناصر المتكررة متتابعة ومنظمة");
+});
+
+test("يعرض زر واتساب العائم أيقونة واتساب واحدة فقط", async () => {
+  const html = await (await render()).text();
+  const floating = html.match(
+    /<a\b(?=[^>]*class="[^"]*\bfloating-whatsapp\b[^"]*")[^>]*>[\s\S]*?<\/a>/i,
+  )?.[0];
+
+  assert.ok(floating, "لم يظهر زر واتساب العائم");
+  assert.equal(floating.match(/<svg\b/gi)?.length ?? 0, 1, "يجب عرض أيقونة واتساب واحدة");
+  assert.doesNotMatch(floating, /floating-pulse/i, "يجب إزالة مؤشر البث الحي من زر واتساب العائم");
 });

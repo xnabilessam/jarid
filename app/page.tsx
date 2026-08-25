@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionController } from "@/app/components/MotionController";
 import { WhatsAppLink } from "@/app/components/WhatsAppLink";
 
 export const metadata: Metadata = {
@@ -110,8 +111,9 @@ const faqs = [
 
 export default function Home() {
   return (
-    <main>
-      <section className="hero" aria-labelledby="hero-title">
+    <main className="motion-page" data-motion-root="home">
+      <MotionController />
+      <section className="hero" aria-labelledby="hero-title" data-motion-section="hero">
         <div className="hero-copy">
           <div className="hero-eyebrow hero-enter hero-enter-1">
             <span className="eyebrow-dot" /> صناعة سعودية
@@ -135,15 +137,15 @@ export default function Home() {
         </div>
 
         <div className="hero-visual hero-enter hero-enter-image">
-          <div className="hero-media-card">
+          <div className="hero-media-card" data-motion-parallax="soft">
             <div className="hero-photo">
               <picture className="hero-picture">
                 <source
                   media="(max-width: 600px)"
-                  srcSet="/images/hero-jarid-logo-v3.jpg"
+                  srcSet="/images/hero-jarid-luxury-v4.jpg"
                 />
                 <img
-                  src="/images/hero-jarid-logo-v3.jpg"
+                  src="/images/hero-jarid-luxury-v4.jpg"
                   alt="قالب سيليكون سيان وقطع شوكولاتة تحمل شعار جريد الأصلي"
                   width="1536"
                   height="1024"
@@ -155,10 +157,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section about-section" id="about">
-        <div className="section-kicker reveal">عن جريد</div>
+      <section className="section about-section" id="about" data-motion-section="about">
+        <div className="section-kicker reveal" data-motion-reveal="line">عن جريد</div>
         <div className="about-grid">
-          <div className="about-copy reveal">
+          <div className="about-copy reveal" data-motion-reveal="copy">
             <h2>
               التصميم <span className="about-emphasis">المتقن</span> جزء من تجربة المنتج
             </h2>
@@ -174,7 +176,7 @@ export default function Home() {
               <div><strong>قرب</strong><span>تصنيع محلي وتواصل مباشر</span></div>
             </div>
           </div>
-          <div className="about-image reveal">
+          <div className="about-image reveal" data-motion-reveal="media" data-motion-parallax="soft">
             <img
               src="/images/craft-jarid.webp"
               alt="صب الشوكولاتة بعناية داخل تصميم سيليكون مخصص"
@@ -187,20 +189,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section solutions-section" id="solutions">
-        <div className="section-heading reveal">
+      <section className="section solutions-section" id="solutions" data-motion-section="solutions">
+        <div className="section-heading reveal" data-motion-reveal="heading">
           <div>
             <span className="section-kicker">حلول جريد</span>
             <h2>خدمات قطاع الحلويات</h2>
           </div>
         </div>
 
-        <div className="solutions-grid">
-          <article className="solution-card solution-card-wide reveal">
-            <div className="solution-visual chocolate-collage" aria-hidden="true">
-              <img src="/images/solution-bear-portrait-v2.avif" alt="" />
-              <img src="/images/solution-incense-wide-v2.avif" alt="" />
-              <img src="/images/solution-dallah-wide-v2.avif" alt="" />
+        <div className="solutions-grid" data-motion-group="solutions">
+          <article className="solution-card solution-card-wide reveal" data-motion-item data-motion-reveal="card">
+            <div className="solution-visual chocolate-collage" aria-hidden="true" data-motion-parallax="soft">
+              <img src="/images/solution-bear-studio-v3.jpg" alt="" />
+              <img src="/images/solution-incense-studio-v3.jpg" alt="" />
+              <img src="/images/solution-dallah-studio-v3.jpg" alt="" />
             </div>
             <div className="solution-copy">
               <span>للضيافة والهدايا</span>
@@ -212,13 +214,13 @@ export default function Home() {
             </div>
           </article>
 
-          <article className="solution-card reveal">
+          <article className="solution-card reveal" data-motion-item data-motion-reveal="card">
             <div className="solution-photo">
               <img
-                src="/images/solution-tiramisu-wide-v2.jpg"
+                src="/images/solution-tiramisu-studio-v3.jpg"
                 alt="تيراميسو بتصميم نخلة مخصص"
-                width="1774"
-                height="887"
+                width="1536"
+                height="1024"
                 loading="lazy"
               />
             </div>
@@ -230,7 +232,7 @@ export default function Home() {
             </div>
           </article>
 
-          <article className="solution-card solution-card-navy reveal">
+          <article className="solution-card solution-card-navy reveal" data-motion-item data-motion-reveal="card">
             <div className="brand-service-mark" aria-hidden="true">
               <img src="/brand/jarid-icon-gold.svg" alt="" />
             </div>
@@ -245,17 +247,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section process-section" id="process">
-        <div className="process-shell reveal">
+      <section className="section process-section" id="process" data-motion-section="process">
+        <div className="process-shell reveal" data-motion-reveal="shell">
           <div className="process-heading">
             <div>
               <span className="section-kicker section-kicker-light">رحلة المنتج</span>
               <h2>من الفكرة إلى النتيجة النهائية</h2>
             </div>
           </div>
-          <div className="journey-grid">
+          <div className="journey-grid" data-motion-group="process">
             {steps.map((step) => (
-              <article className="journey-card" key={step.number}>
+              <article className="journey-card" key={step.number} data-motion-item data-motion-reveal="card">
                 <div className={`journey-visual journey-${step.visual}`} aria-hidden="true">
                   {step.visual === "sketch" && (
                     <img src="/brand/jarid-icon-navy.svg" alt="" />
@@ -311,16 +313,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section products-section" id="work">
-        <div className="section-heading reveal">
+      <section className="section products-section" id="work" data-motion-section="products">
+        <div className="section-heading reveal" data-motion-reveal="heading">
           <div>
             <span className="section-kicker">من الكتالوج</span>
             <h2>تفاصيل محلية، بصياغة معاصرة</h2>
           </div>
         </div>
-        <div className="product-track reveal">
+        <div className="product-track reveal" data-motion-group="products">
           {products.map((product) => (
-            <article className="product-card" key={product.name}>
+            <article className="product-card" key={product.name} data-motion-item data-motion-reveal="card">
               <div className="product-image">
                 <img
                   src={product.image}
@@ -339,14 +341,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section comparison-section" id="comparison">
-        <div className="section-heading reveal">
+      <section className="section comparison-section" id="comparison" data-motion-section="comparison">
+        <div className="section-heading reveal" data-motion-reveal="heading">
           <div>
             <span className="section-kicker">الفرق واضح</span>
             <h2>اختيار يصنع الفرق لمنتجك</h2>
           </div>
         </div>
-        <div className="comparison-shell reveal">
+        <div className="comparison-shell reveal" data-motion-reveal="shell">
           <table className="comparison-table">
             <thead>
               <tr>
@@ -355,9 +357,9 @@ export default function Home() {
                 <th scope="col">القوالب التجارية ❌</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody data-motion-group="comparison">
               {comparisons.map((comparison) => (
-                <tr key={comparison.feature}>
+                <tr key={comparison.feature} data-motion-item data-motion-reveal="row">
                   <th scope="row" className="comparison-feature">
                     {comparison.feature}
                   </th>
@@ -370,14 +372,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section faq-section" id="faq">
-        <div className="faq-heading reveal">
+      <section className="section faq-section" id="faq" data-motion-section="faq">
+        <div className="faq-heading reveal" data-motion-reveal="heading">
           <span className="section-kicker">الأسئلة الشائعة</span>
           <h2>قبل أن تبدأ</h2>
         </div>
-        <div className="faq-list reveal">
+        <div className="faq-list reveal" data-motion-group="faq">
           {faqs.map((faq, index) => (
-            <details className="faq-item" key={faq.question}>
+            <details className="faq-item" key={faq.question} data-motion-item data-motion-reveal="row">
               <summary>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {faq.question}
@@ -391,9 +393,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section final-cta-section">
-        <div className="final-cta reveal">
-          <img className="final-cta-icon" src="/brand/jarid-icon-gold.svg" alt="" />
+      <section className="section final-cta-section" data-motion-section="final-cta">
+        <div className="final-cta reveal" data-motion-reveal="shell">
+          <img className="final-cta-icon" src="/brand/jarid-icon-gold.svg" alt="" data-motion-parallax="soft" />
           <h2>جاهز تبدأ؟</h2>
           <p>أرسل متطلباتك وبنحولها إلى منتج يناسبك</p>
           <WhatsAppLink className="button button-gold button-large">
