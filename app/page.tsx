@@ -284,11 +284,12 @@ export default function Home() {
                   {step.visual === "mold" && (
                     <div className="mold-icons">
                       {[1, 2, 3, 4, 5, 6].map((cavity) => (
-                        <img
-                          key={cavity}
-                          src="/brand/jarid-icon-navy.svg"
-                          alt=""
-                        />
+                        <span key={cavity}>
+                          <img
+                            src="/brand/jarid-icon-navy.svg"
+                            alt=""
+                          />
+                        </span>
                       ))}
                     </div>
                   )}

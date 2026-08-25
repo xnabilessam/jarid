@@ -858,27 +858,69 @@ a {
 
 .journey-mold {
   background:
-    radial-gradient(ellipse at 22% 16%, rgba(255, 255, 255, 0.38), transparent 44%),
-    linear-gradient(145deg, #85d9d8, var(--silicone) 55%, #44aeb7);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    radial-gradient(ellipse at 50% 78%, rgba(17, 39, 54, 0.2), transparent 42%),
+    linear-gradient(145deg, #f5f0ec, var(--sand));
+  perspective: 800px;
+}
+
+.journey-mold::before {
+  content: "";
+  position: absolute;
+  width: min(82%, 212px);
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(17, 39, 54, 0.2);
+  filter: blur(11px);
+  transform: translateY(72px) rotate(-6deg);
 }
 
 .mold-icons {
-  width: min(84%, 188px);
+  position: relative;
+  z-index: 1;
+  width: min(88%, 228px);
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 23px;
+  background: linear-gradient(145deg, #8bdee0, var(--silicone) 48%, #3fabb5);
+  box-shadow:
+    0 24px 34px rgba(17, 39, 54, 0.24),
+    inset 2px 3px 4px rgba(255, 255, 255, 0.44),
+    inset -3px -4px 7px rgba(17, 39, 54, 0.16);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 9px;
+  transform: rotate(-6deg) rotateX(4deg);
 }
 
-.mold-icons > * {
+.mold-icons::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.27);
+  border-radius: 17px;
+  pointer-events: none;
+}
+
+.mold-icons > span {
   width: 100%;
   aspect-ratio: 1;
-  padding: 11px;
-  border: 1px solid rgba(17, 39, 54, 0.09);
-  border-radius: 15px;
-  background: rgba(17, 39, 54, 0.075);
-  box-shadow: inset 3px 5px 9px rgba(17, 39, 54, 0.2), inset -2px -3px 5px rgba(255, 255, 255, 0.38);
+  padding: 8px;
+  border: 1px solid rgba(17, 39, 54, 0.11);
+  border-radius: 14px;
+  background: rgba(17, 39, 54, 0.09);
+  box-shadow:
+    inset 4px 6px 9px rgba(17, 39, 54, 0.26),
+    inset -3px -4px 6px rgba(255, 255, 255, 0.28);
+  display: grid;
+  place-items: center;
+}
+
+.mold-icons img {
+  width: 82%;
+  height: 82%;
+  opacity: 0.82;
   object-fit: contain;
+  filter: drop-shadow(1px 2px 1px rgba(255, 255, 255, 0.22));
 }
 
 .journey-finished {
@@ -890,10 +932,10 @@ a {
 .journey-finished::before {
   content: "";
   position: absolute;
-  width: 132px;
-  height: 132px;
+  width: min(76%, 190px);
+  aspect-ratio: 1;
   border: 1px solid rgba(255, 255, 255, 0.76);
-  border-radius: 30px;
+  border-radius: 36px;
   background: rgba(255, 255, 255, 0.28);
   box-shadow: 0 18px 36px rgba(17, 39, 54, 0.13), inset 0 0 25px rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
@@ -901,9 +943,9 @@ a {
 }
 
 .journey-finished > img {
-  width: 88px;
-  height: 88px;
-  filter: drop-shadow(0 8px 9px rgba(204, 150, 86, 0.24));
+  width: min(86%, 225px);
+  height: auto;
+  filter: drop-shadow(0 14px 14px rgba(17, 39, 54, 0.2));
 }
 
 .journey-index {

@@ -245,6 +245,24 @@ test("يعرض مراحل الفكرة والرسم والتصميم ثلاثي 
   }
 });
 
+test("يوضح قالب السيليكون السيان ويكبر المنتج النهائي في رحلة المنتج", () => {
+  assert.match(
+    homepageStyles,
+    /\.mold-icons\s*\{[^}]*background\s*:\s*linear-gradient\([^}]*var\(--silicone\)[^}]*transform\s*:[^;]*rotate/s,
+    "يجب أن يظهر قالب المرحلة الثالثة كصينية سيليكون سيان مستقلة",
+  );
+  assert.match(
+    homepageStyles,
+    /\.mold-icons\s*>\s*span\s*\{[^}]*box-shadow\s*:[^}]*inset/s,
+    "يجب أن تظهر تجاويف قالب السيليكون بعمق واضح",
+  );
+  assert.match(
+    homepageStyles,
+    /\.journey-finished\s*>\s*img\s*\{[^}]*width\s*:\s*min\(86%,\s*225px\)/s,
+    "يجب تكبير صورة المنتج النهائي داخل المرحلة الأخيرة",
+  );
+});
+
 test("يقارن قوالب جريد والقوالب التجارية عبر المزايا الثماني المطلوبة", async () => {
   const html = await (await render()).text();
   const table = html.match(/<table\b[^>]*>[\s\S]*?<\/table>/i)?.[0];
